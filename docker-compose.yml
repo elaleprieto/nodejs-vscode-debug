@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    nodejs:
+      build: .
+      image: node:6.10.3-wheezy
+      ports:
+        - "3000:3000"
+        - "5858:5858"
+      restart: always
+      # command: bash -c "cd /var/www/html/ionic-osm && ionic serve --all"
+      command: bash -c "cd /usr/src/app && nodemon app.js --debug=5858"
+      # command: bash -c "cd /usr/src/app && node app.js && tail -f /dev/null"
+      volumes:
+        - ./src:/usr/src/app
